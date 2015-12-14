@@ -1,0 +1,58 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href={% static "style.css" %}>
+    <title>My Site</title>
+</head>
+<body>
+    <div class="block-nav">
+        <header>
+            <div class="container">
+                <a href="#">
+                    <h1>
+                        My Site
+                    </h1>
+                </a>
+            </div>
+        </header>
+        <nav>
+            <div class="container">
+                <div class = "my_link">
+                    <a href="/">Home</a>
+                </div>
+                <div class = "my_link">
+                    <a>Blog</a>
+                </div>
+                <div class = "my_link">
+                    <a href="blog/about/">About</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main>
+        <div class="container">
+            <div style="width: 70%; float: left; display: inline">
+                {% block content %}{% endblock %}
+            </div>
+            <div style="width: 30%; display: inline">
+                <h4>New articles!</h4>
+                <ol style="list-style-type: none">
+                    {% for article in articles %}
+                        <li><a href="{% url 'article' article.slug%}">{{ article.title }}</a></li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </main>
+    <div style="clear: both;"></div>
+    <footer>
+        <div class="container">
+                koko
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+        {% for article in articles %}
+            <h2>{{ article }}</h2>
+            <p>{{ article.time }}</p>
+            {{ article.summary|safe }}
+            <div class="button"><a href={% url "article" article.slug %}> Present </a></div>
+            <hr>
+        {% endfor %}
+{% endblock %}
